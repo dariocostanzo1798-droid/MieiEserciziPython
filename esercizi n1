@@ -1,0 +1,20 @@
+# Installa lo strumento necessario (solo la prima volta)
+!pip install textblob
+
+from textblob import TextBlob
+
+def analizza_commento(testo):
+    # TextBlob analizza la frase
+    analisi = TextBlob(testo)
+    
+    # La polarità va da -1 (negativo) a 1 (positivo)
+    if analisi.sentiment.polarity > 0:
+        return "😊 Positivo"
+    elif analisi.sentiment.polarity < 0:
+        return "😡 Negativo"
+    else:
+        return "😐 Neutro"
+
+# Testiamo!
+mio_commento = "your language is terrible"
+print(analizza_commento(mio_commento))
